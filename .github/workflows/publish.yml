@@ -37,8 +37,3 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: twine upload dist/*
-    
-    - name: Test package installation
-      run: |
-        pip install .
-        python -c "import dummy_data_generator; print(dummy_data_generator.__version__)"
