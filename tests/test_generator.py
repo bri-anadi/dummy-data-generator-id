@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime, timedelta
-from dummy_data_generator import DummyDataGenerator
+from ../dummy_data_generator import DummyDataGenerator
 
 
 class TestDummyDataGenerator(unittest.TestCase):
