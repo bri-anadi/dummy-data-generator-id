@@ -1,96 +1,95 @@
-# DummyDataGenerator
+# DummyDataGeneratorId
 
 A Python utility class for generating realistic dummy data with Indonesian context. This generator can create various types of data including names, emails, addresses, phone numbers, and more.
 
 ## Installation
 
 ```bash
-# Clone the repository
 pip install dummy-data-generator-id
 ```
 
 # Usage
 ## Basic Usage
 ```python
-from dummy_data_generator import DummyDataGenerator
+from dummy_data_generator_id import DummyDataGeneratorId
 
 # Generate a single complete user data
-user = DummyDataGenerator.generate_user_data()
+user = DummyDataGeneratorId.generate_user_data()
 
 # Generate multiple user data
-users = DummyDataGenerator.generate_user_data(count=5)
+users = DummyDataGeneratorId.generate_user_data(count=5)
 ```
 
 # Individual Data Generation
 ## Generate Name
 ```python
 # Random gender name
-name = DummyDataGenerator.generate_name()
+name = DummyDataGeneratorId.generate_name()
 
 # Specific gender name
-male_name = DummyDataGenerator.generate_name(gender='male')
-female_name = DummyDataGenerator.generate_name(gender='female')
+male_name = DummyDataGeneratorId.generate_name(gender='male')
+female_name = DummyDataGeneratorId.generate_name(gender='female')
 ```
 
 ## Generate Email
 ```python
 # Random email
-email = DummyDataGenerator.generate_email()
+email = DummyDataGeneratorId.generate_email()
 
 # Email based on name
-email = DummyDataGenerator.generate_email(name="John Doe")
+email = DummyDataGeneratorId.generate_email(name="John Doe")
 ```
 
 ## Generate Phone Number
 ```python
 # Indonesian phone number (default)
-phone = DummyDataGenerator.generate_phone()
+phone = DummyDataGeneratorId.generate_phone()
 
 # Custom country code
-phone = DummyDataGenerator.generate_phone(country_code='60')
+phone = DummyDataGeneratorId.generate_phone(country_code='60')
 ```
 
 ## Generate Address
 ```python
 # Random address
-address = DummyDataGenerator.generate_address()
+address = DummyDataGeneratorId.generate_address()
 
 # Address with specific province
-address = DummyDataGenerator.generate_address(province='DKI Jakarta')
+address = DummyDataGeneratorId.generate_address(province='DKI Jakarta')
 ```
 
 ## Generate Job Title
 ```python
-job = DummyDataGenerator.generate_job()
+job = DummyDataGeneratorId.generate_job()
 ```
 
 ## Generate Company Name
 ```python
-company = DummyDataGenerator.generate_company()
+company = DummyDataGeneratorId.generate_company()
 ```
 
 ## Generate Birthdate
 ```python
 # Default age range (18-65)
-birthdate = DummyDataGenerator.generate_birthdate()
+birthdate = DummyDataGeneratorId.generate_birthdate()
 
 # Custom age range
-birthdate = DummyDataGenerator.generate_birthdate(min_age=25, max_age=45)
+birthdate = DummyDataGeneratorId.generate_birthdate(min_age=25, max_age=45)
 ```
 
 ## Generate Credit Card Details
 ```python
-credit_card = DummyDataGenerator.generate_credit_card()
+credit_card = DummyDataGeneratorId.generate_credit_card()
 ```
 
 ## Generate Username
 ```python
-username = DummyDataGenerator.generate_username()
+username = DummyDataGeneratorId.generate_username()
 ```
 
 ## Generate UUID
 ```python
-uuid = DummyDataGenerator.generate_uuid()
+uuid = DummyDataGeneratorId.generate_uuid()
 ```
 
 # Output Examples

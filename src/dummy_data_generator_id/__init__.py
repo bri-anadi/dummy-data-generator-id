@@ -5,5 +5,5 @@ A comprehensive library for generating realistic dummy data for Indonesian conte
 
 from .generator import DummyDataGeneratorId
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __all__ = ['DummyDataGenerator']
