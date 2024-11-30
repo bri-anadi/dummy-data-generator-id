@@ -51,7 +51,7 @@ class DummyDataGeneratorId:
             str: Email address
         """
         if name is None:
-            name = DummyDataGenerator.generate_name()
+            name = DummyDataGeneratorId.generate_name()
 
         username = name.lower().replace(' ', '.') + str(random.randint(10, 99))
         domains = ['gmail.com', 'yahoo.com',
@@ -137,7 +137,7 @@ class DummyDataGeneratorId:
             'Sejahtera', 'Maju', 'Kreatif', 'Internasional'
         ]
 
-        return f"{random.choice(prefixes)} {DummyDataGenerator.generate_random_word()} {random.choice(company_types)}"
+        return f"{random.choice(prefixes)} {DummyDataGeneratorId.generate_random_word()} {random.choice(company_types)}"
 
     @staticmethod
     def generate_birthdate(min_age=18, max_age=65):
@@ -174,7 +174,7 @@ class DummyDataGeneratorId:
         def generate_card_number(prefix, length):
             number = prefix + ''.join(str(random.randint(0, 9))
                                       for _ in range(length - len(prefix) - 1))
-            number += str(DummyDataGenerator.luhn_checksum(number))
+            number += str(DummyDataGeneratorId.luhn_checksum(number))
             return number
 
         card_numbers = {
@@ -245,7 +245,7 @@ class DummyDataGeneratorId:
         Returns:
             str: Username
         """
-        words = [DummyDataGenerator.generate_random_word() for _ in range(2)]
+        words = [DummyDataGeneratorId.generate_random_word() for _ in range(2)]
         numbers = ''.join(str(random.randint(0, 9))
                           for _ in range(random.randint(1, 3)))
         return f"{''.join(words)}{numbers}"
@@ -264,20 +264,20 @@ class DummyDataGeneratorId:
         users = []
         for _ in range(count):
             gender = random.choice(['male', 'female'])
-            name = DummyDataGenerator.generate_name(gender)
+            name = DummyDataGeneratorId.generate_name(gender)
 
             user = {
-                'id': DummyDataGenerator.generate_uuid(),
+                'id': DummyDataGeneratorId.generate_uuid(),
                 'name': name,
-                'email': DummyDataGenerator.generate_email(name),
-                'username': DummyDataGenerator.generate_username(),
+                'email': DummyDataGeneratorId.generate_email(name),
+                'username': DummyDataGeneratorId.generate_username(),
                 'gender': gender,
-                'phone': DummyDataGenerator.generate_phone(),
-                'birthdate': DummyDataGenerator.generate_birthdate(),
-                'address': DummyDataGenerator.generate_address(),
-                'job': DummyDataGenerator.generate_job(),
-                'company': DummyDataGenerator.generate_company(),
-                'credit_card': DummyDataGenerator.generate_credit_card()
+                'phone': DummyDataGeneratorId.generate_phone(),
+                'birthdate': DummyDataGeneratorId.generate_birthdate(),
+                'address': DummyDataGeneratorId.generate_address(),
+                'job': DummyDataGeneratorId.generate_job(),
+                'company': DummyDataGeneratorId.generate_company(),
+                'credit_card': DummyDataGeneratorId.generate_credit_card()
             }
             users.append(user)
 
