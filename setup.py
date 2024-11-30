@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dummy-data-generator-id",
-    version="0.1.3",
+    version="0.2.3",
     author="Brian Adi",
     author_email="uix.brianadi@gmail.com",
     description="A library for generating realistic dummy data for Indonesian context",

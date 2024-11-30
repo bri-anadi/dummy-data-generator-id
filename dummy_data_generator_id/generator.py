@@ -6,16 +6,22 @@ import uuid
 
 class DummyDataGeneratorId:
     @staticmethod
-    def generate_name(gender=None):
+    def generate_name(input_param=None, gender=None):
         """
-        Generate random name with optional gender specification
+        Generate random name(s) with optional gender specification
 
         Args:
+            input_param: Can be either count (int) or gender (str)
             gender (str, optional): 'male' or 'female'. Defaults to random.
 
         Returns:
-            str: Full name
+            str or list: Single name or list of names
         """
+        if isinstance(input_param, int):
+            return [DummyDataGeneratorId.generate_name(gender=gender) for _ in range(input_param)]
+        elif isinstance(input_param, str):
+            gender = input_param
+
         first_names_male = [
             'Ahmad', 'Muhammad', 'Budi', 'Dedi', 'Rudi', 'Adi', 'Eko', 'Agus',
             'Hadi', 'Iwan', 'Bambang', 'Slamet', 'Hendro', 'Yulio', 'Taufik'
@@ -40,16 +46,20 @@ class DummyDataGeneratorId:
         return f"{first_name} {last_name}"
 
     @staticmethod
-    def generate_email(name=None):
+    def generate_email(input_param=None):
         """
-        Generate random email based on name or completely random
+        Generate random email(s) based on name or completely random
 
         Args:
-            name (str, optional): Name to base email on. Defaults to None.
+            input_param: Can be either count (int) or name (str)
 
         Returns:
-            str: Email address
+            str or list: Single email or list of emails
         """
+        if isinstance(input_param, int):
+            return [DummyDataGeneratorId.generate_email() for _ in range(input_param)]
+
+        name = input_param
         if name is None:
             name = DummyDataGeneratorId.generate_name()
 
@@ -60,31 +70,39 @@ class DummyDataGeneratorId:
         return f"{username}@{random.choice(domains)}"
 
     @staticmethod
-    def generate_phone(country_code='62'):
+    def generate_phone(input_param=None, country_code='62'):
         """
-        Generate Indonesian phone number
+        Generate Indonesian phone number(s)
 
         Args:
+            input_param: Count of phone numbers to generate
             country_code (str, optional): Country code. Defaults to '62'.
 
         Returns:
-            str: Phone number
+            str or list: Single phone number or list of phone numbers
         """
+        if isinstance(input_param, int):
+            return [DummyDataGeneratorId.generate_phone(country_code=country_code) for _ in range(input_param)]
+
         prefixes = ['811', '812', '813', '814', '815', '816', '817', '818',
                     '819', '821', '822', '823', '852', '853', '855', '856', '857', '858']
         return f"{country_code}{random.choice(prefixes)}{''.join(str(random.randint(0, 9)) for _ in range(8))}"
 
     @staticmethod
-    def generate_address(province=None):
+    def generate_address(input_param=None, province=None):
         """
-        Generate random Indonesian address
+        Generate random Indonesian address(es)
 
         Args:
+            input_param: Count of addresses to generate
             province (str, optional): Specific province. Defaults to None.
 
         Returns:
-            dict: Address details
+            dict or list: Single address or list of addresses
         """
+        if isinstance(input_param, int):
+            return [DummyDataGeneratorId.generate_address(province=province) for _ in range(input_param)]
+
         provinces = [
             'DKI Jakarta', 'Jawa Barat', 'Jawa Tengah', 'Jawa Timur',
             'Banten', 'Bali', 'Sumatera Utara', 'Sumatera Barat'
@@ -105,13 +123,19 @@ class DummyDataGeneratorId:
         }
 
     @staticmethod
-    def generate_job():
+    def generate_job(count=None):
         """
-        Generate random job title
+        Generate random job title(s)
+
+        Args:
+            count (int, optional): Number of job titles to generate
 
         Returns:
-            str: Job title
+            str or list: Single job title or list of job titles
         """
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_job() for _ in range(count)]
+
         industries = [
             'IT', 'Finance', 'Marketing', 'Sales', 'Engineering',
             'Education', 'Healthcare', 'Design', 'Consulting'
@@ -124,13 +148,19 @@ class DummyDataGeneratorId:
         return f"{random.choice(job_levels)} {random.choice(job_types)} - {random.choice(industries)}"
 
     @staticmethod
-    def generate_company():
+    def generate_company(count=None):
         """
-        Generate random company name
+        Generate random company name(s)
+
+        Args:
+            count (int, optional): Number of company names to generate
 
         Returns:
-            str: Company name
+            str or list: Single company name or list of company names
         """
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_company() for _ in range(count)]
+
         prefixes = ['PT', 'CV', 'Yayasan']
         company_types = [
             'Teknologi', 'Inovasi', 'Global', 'Mandiri', 'Utama',
@@ -140,34 +170,42 @@ class DummyDataGeneratorId:
         return f"{random.choice(prefixes)} {DummyDataGeneratorId.generate_random_word()} {random.choice(company_types)}"
 
     @staticmethod
-    def generate_birthdate(min_age=18, max_age=65):
+    def generate_birthdate(input_param=None, min_age=18, max_age=65):
         """
-        Generate random birthdate
+        Generate random birthdate(s)
 
         Args:
+            input_param: Count of birthdates to generate
             min_age (int, optional): Minimum age. Defaults to 18.
             max_age (int, optional): Maximum age. Defaults to 65.
 
         Returns:
-            datetime: Birthdate
+            datetime or list: Single birthdate or list of birthdates
         """
+        if isinstance(input_param, int):
+            return [DummyDataGeneratorId.generate_birthdate(min_age=min_age, max_age=max_age) for _ in range(input_param)]
+
         today = datetime.now()
         years_ago = random.randint(min_age, max_age)
         birthdate = today - timedelta(days=years_ago*365)
-
-        # Add some random variation in month and day
         birthdate -= timedelta(days=random.randint(0, 365))
 
         return birthdate
 
     @staticmethod
-    def generate_credit_card():
+    def generate_credit_card(count=None):
         """
-        Generate dummy credit card details
+        Generate dummy credit card detail(s)
+
+        Args:
+            count (int, optional): Number of credit cards to generate
 
         Returns:
-            dict: Credit card details
+            dict or list: Single credit card details or list of credit card details
         """
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_credit_card() for _ in range(count)]
+
         card_types = ['Visa', 'MasterCard', 'American Express']
         card_type = random.choice(card_types)
 
@@ -189,6 +227,25 @@ class DummyDataGeneratorId:
             'expiry_date': (datetime.now() + timedelta(days=random.randint(365, 1825))).strftime('%m/%y'),
             'cvv': ''.join(str(random.randint(0, 9)) for _ in range(3))
         }
+
+    @staticmethod
+    def generate_username(count=None):
+        """
+        Generate random username(s)
+
+        Args:
+            count (int, optional): Number of usernames to generate
+
+        Returns:
+            str or list: Single username or list of usernames
+        """
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_username() for _ in range(count)]
+
+        words = [DummyDataGeneratorId.generate_random_word() for _ in range(2)]
+        numbers = ''.join(str(random.randint(0, 9))
+                          for _ in range(random.randint(1, 3)))
+        return f"{''.join(words)}{numbers}"
 
     @staticmethod
     def luhn_checksum(card_number):
@@ -213,72 +270,36 @@ class DummyDataGeneratorId:
         return (10 - (checksum % 10)) % 10
 
     @staticmethod
-    def generate_random_word(min_length=3, max_length=10):
+    def generate_random_word(count=None, min_length=3, max_length=10):
         """
-        Generate random word
+        Generate random word(s)
 
         Args:
+            count (int, optional): Number of words to generate
             min_length (int, optional): Minimum word length. Defaults to 3.
             max_length (int, optional): Maximum word length. Defaults to 10.
 
         Returns:
-            str: Random word
+            str or list: Single word or list of words
         """
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_random_word(min_length=min_length, max_length=max_length) for _ in range(count)]
+
         length = random.randint(min_length, max_length)
         return ''.join(random.choice(string.ascii_lowercase) for _ in range(length)).capitalize()
 
     @staticmethod
-    def generate_uuid():
+    def generate_uuid(count=None):
         """
-        Generate unique identifier
-
-        Returns:
-            str: UUID
-        """
-        return str(uuid.uuid4())
-
-    @staticmethod
-    def generate_username():
-        """
-        Generate random username
-
-        Returns:
-            str: Username
-        """
-        words = [DummyDataGeneratorId.generate_random_word() for _ in range(2)]
-        numbers = ''.join(str(random.randint(0, 9))
-                          for _ in range(random.randint(1, 3)))
-        return f"{''.join(words)}{numbers}"
-
-    @staticmethod
-    def generate_user_data(count=1):
-        """
-        Generate multiple user data
+        Generate unique identifier(s)
 
         Args:
-            count (int, optional): Number of users to generate. Defaults to 1.
+            count (int, optional): Number of UUIDs to generate
 
         Returns:
-            list: List of user dictionaries
+            str or list: Single UUID or list of UUIDs
         """
-        users = []
-        for _ in range(count):
-            gender = random.choice(['male', 'female'])
-            name = DummyDataGeneratorId.generate_name(gender)
+        if isinstance(count, int):
+            return [DummyDataGeneratorId.generate_uuid() for _ in range(count)]
 
-            user = {
-                'id': DummyDataGeneratorId.generate_uuid(),
-                'name': name,
-                'email': DummyDataGeneratorId.generate_email(name),
-                'username': DummyDataGeneratorId.generate_username(),
-                'gender': gender,
-                'phone': DummyDataGeneratorId.generate_phone(),
-                'birthdate': DummyDataGeneratorId.generate_birthdate(),
-                'address': DummyDataGeneratorId.generate_address(),
-                'job': DummyDataGeneratorId.generate_job(),
-                'company': DummyDataGeneratorId.generate_company(),
-                'credit_card': DummyDataGeneratorId.generate_credit_card()
-            }
-            users.append(user)
-
-        return users if count > 1 else users[0]
+        return str(uuid.uuid4())
