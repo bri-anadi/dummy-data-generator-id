@@ -1,60 +1,153 @@
-# Dummy Data Generator Indonesia
+# DummyDataGenerator
 
-## 🚀 Deskripsi
-`dummy-data-generator-id` adalah library Python canggih untuk menghasilkan data dummy Indonesia secara acak dan realistis.
+A Python utility class for generating realistic dummy data with Indonesian context. This generator can create various types of data including names, emails, addresses, phone numbers, and more.
 
-## ✨ Fitur Utama
-- Generate nama lengkap (dengan pilihan gender)
-- Pembangkit email otomatis
-- Nomor telepon Indonesia
-- Alamat lengkap
-- Pekerjaan dan perusahaan palsu
-- Tanggal lahir dengan rentang umur
-- Kartu kredit dengan validasi Luhn
-- Generate data pengguna utuh
-
-## 🛠️ Instalasi
+## Installation
 
 ```bash
+# Clone the repository
 pip install dummy-data-generator-id
 ```
 
-## 💻 Penggunaan Dasar
-
-### Generate Satu Pengguna
+# Usage
+## Basic Usage
 ```python
 from dummy_data_generator import DummyDataGenerator
 
-# Generate satu pengguna
-single_user = DummyDataGenerator.generate_user_data()
-print(single_user)
+# Generate a single complete user data
+user = DummyDataGenerator.generate_user_data()
+
+# Generate multiple user data
+users = DummyDataGenerator.generate_user_data(count=5)
 ```
 
-### Generate Beberapa Pengguna
+# Individual Data Generation
+## Generate Name
 ```python
-# Generate 5 pengguna sekaligus
-multiple_users = DummyDataGenerator.generate_user_data(5)
+# Random gender name
+name = DummyDataGenerator.generate_name()
+
+# Specific gender name
+male_name = DummyDataGenerator.generate_name(gender='male')
+female_name = DummyDataGenerator.generate_name(gender='female')
 ```
 
-## 🔍 Metode Tersedia
+## Generate Email
+```python
+# Random email
+email = DummyDataGenerator.generate_email()
 
-### Data Pengguna
-- `generate_user_data(count=1)`: Generate data pengguna lengkap
-- `generate_name(gender=None)`: Generate nama
-- `generate_email(name=None)`: Generate email
-- `generate_phone()`: Generate nomor telepon
-- `generate_address()`: Generate alamat
-- `generate_birthdate()`: Generate tanggal lahir
-- `generate_job()`: Generate pekerjaan
-- `generate_company()`: Generate nama perusahaan
+# Email based on name
+email = DummyDataGenerator.generate_email(name="John Doe")
+```
 
-### Data Tambahan
-- `generate_credit_card()`: Generate kartu kredit
-- `generate_uuid()`: Generate UUID unik
-- `generate_username()`: Generate username
+## Generate Phone Number
+```python
+# Indonesian phone number (default)
+phone = DummyDataGenerator.generate_phone()
 
-## 🤝 Kontribusi
-Kami terbuka untuk kontribusi! Silakan buka issue atau kirim pull request.
+# Custom country code
+phone = DummyDataGenerator.generate_phone(country_code='60')
+```
 
-## 📝 Lisensi
-Dilisensikan di bawah MIT License.
+## Generate Address
+```python
+# Random address
+address = DummyDataGenerator.generate_address()
+
+# Address with specific province
+address = DummyDataGenerator.generate_address(province='DKI Jakarta')
+```
+
+## Generate Job Title
+```python
+job = DummyDataGenerator.generate_job()
+```
+
+## Generate Company Name
+```python
+company = DummyDataGenerator.generate_company()
+```
+
+## Generate Birthdate
+```python
+# Default age range (18-65)
+birthdate = DummyDataGenerator.generate_birthdate()
+
+# Custom age range
+birthdate = DummyDataGenerator.generate_birthdate(min_age=25, max_age=45)
+```
+
+## Generate Credit Card Details
+```python
+credit_card = DummyDataGenerator.generate_credit_card()
+```
+
+## Generate Username
+```python
+username = DummyDataGenerator.generate_username()
+```
+
+## Generate UUID
+```python
+uuid = DummyDataGenerator.generate_uuid()
+```
+
+# Output Examples
+Single User Data
+```python
+{
+    'id': '123e4567-e89b-12d3-a456-426614174000',
+    'name': 'Ahmad Setiawan',
+    'email': 'ahmad.setiawan76@gmail.com',
+    'username': 'BlueKangaroo123',
+    'gender': 'male',
+    'phone': '6281234567890',
+    'birthdate': datetime.datetime(1990, 5, 15),
+    'address': {
+        'street': 'Jalan Merdeka No. 45',
+        'city': 'Kota DKI Jakarta',
+        'province': 'DKI Jakarta',
+        'postal_code': '12345'
+    },
+    'job': 'Senior Developer - IT',
+    'company': 'PT Teknologi Maju',
+    'credit_card': {
+        'type': 'Visa',
+        'number': '4532015112830366',
+        'expiry_date': '05/25',
+        'cvv': '123'
+    }
+}
+```
+# Features
+- Generate Indonesian-context dummy data
+- Support for both single and bulk data generation
+- Customizable parameters for most generators
+- Realistic data patterns
+- Built-in validation (e.g., Luhn algorithm for credit card numbers)
+
+# Data Types Available
+- Full Names (Gender-specific)
+- Email Addresses
+- Phone Numbers (Indonesian format)
+- Addresses (Indonesian provinces)
+- Job Titles
+- Company Names
+- Birthdates
+- Credit Card Details
+- Usernames
+- UUIDs
+
+# Notes
+- All generated data is fictional and should only be used for testing purposes
+- Credit card numbers are valid format but not real cards
+- Phone numbers follow Indonesian mobile number formats
+- Addresses use Indonesian provinces and city naming conventions
+
+# Requirements
+- Python 3.6+
+- UUID library
+
+# License
+MIT License

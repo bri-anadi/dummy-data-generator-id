@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import uuid
 
 
-class DummyDataGenerator:
+class DummyDataGeneratorId:
     @staticmethod
     def generate_name(gender=None):
         """
@@ -17,7 +17,7 @@ class DummyDataGenerator:
             str: Full name
         """
         first_names_male = [
-            'Ahmad', 'Muhammad', 'Budi', 'Dedi', 'Rudi', 'Joko', 'Eko', 'Agus',
+            'Ahmad', 'Muhammad', 'Budi', 'Dedi', 'Rudi', 'Adi', 'Eko', 'Agus',
             'Hadi', 'Iwan', 'Bambang', 'Slamet', 'Hendro', 'Yulio', 'Taufik'
         ]
         first_names_female = [

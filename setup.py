@@ -1,18 +1,18 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
-
 setup(
     name="dummy-data-generator-id",
-    version="0.1.0",
+    version="0.1.1",
     author="Brian Adi",
     author_email="uix.brianadi@gmail.com",
     description="A library for generating realistic dummy data for Indonesian context",
-    long_description=long_description,
+    long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/bri-anadi/dummy-data-generator-id",
     packages=find_packages(),
+    install_requires=[
+        'uuid',
+    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
